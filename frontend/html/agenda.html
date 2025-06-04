@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendador de Tarefas</title>
+  <link rel="stylesheet" href="../css/agenda.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Agendador de Tarefas</h1>
+
+    <form id="task-form">
+      <input type="text" id="title" placeholder="Título da Tarefa" required />
+      <textarea id="note" placeholder="Anotações..."></textarea>
+
+      <label for="category">Categoria:</label>
+      <select id="category">
+        <option value="Trabalho">Trabalho</option>
+        <option value="Pessoal">Pessoal</option>
+        <option value="Estudo">Estudo</option>
+      </select>
+
+      <label for="priority">Prioridade:</label>
+      <select id="priority">
+        <option value="Alta">Alta</option>
+        <option value="Média">Média</option>
+        <option value="Baixa">Baixa</option>
+      </select>
+
+      <label for="deadline">Prazo:</label>
+      <input type="datetime-local" id="deadline" />
+
+      <button type="submit">Adicionar Tarefa</button>
+    </form>
+
+    <ul id="task-list"></ul>
+  </div>
+
+  <script src="../js/agenda.js"></script>
+</body>
+</html>
