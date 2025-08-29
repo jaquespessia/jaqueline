@@ -1,0 +1,8 @@
+[
+    {
+        "nome_produto": "pompom",
+        "quantidade": 1,
+        "preco": 1000.0,
+        "tem_estoque": true
+    }
+]

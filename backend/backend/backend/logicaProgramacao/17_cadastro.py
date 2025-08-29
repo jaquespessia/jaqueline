@@ -5,8 +5,7 @@ def adicionar():
             f.write(nome + "\n")
         print("Usuário adicionado com sucesso!")
     except Exception as e:
-        print("Erro ao adicionar usuário:", e)
-
+        print ("Erro ao adicionar usuário")
 def listar():
     try:
         with open("usuarios.txt", "r") as f:
