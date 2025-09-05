@@ -7,63 +7,45 @@
 
 
 import json
-ARQUIVO = "biblioteca.json"
 
-def carregar_livros():
-    try:
-        with open(ARQUIVO, "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        return []
+livros = []
 
-def salvar_livros(livros):
-    with open(ARQUIVO, "w") as f:
-        json.dump(livros, f, indent=4)
+try:
+    with open('biblioteca.json', 'r') as arquivo:
+        livros = json.load(arquivo)
+        print("Livros carregados com sucesso!\n")
+except FileNotFoundError:
+    print("Nenhum livro cadastrado ainda.\n")
 
-def adicionar_livro():
+while True:
+    print("---- Cadastrar novo livro ----")
+    titulo = input("Título: ")
+    autor = input("Autor: ")
+    editora = input("Editora: ")
+    ano = int(input("Ano da publicação: "))
+    genero = input("Gênero: ")
+    paginas = int(input("Número de páginas: "))
+    idioma = input("Idioma: ")
+
     livro = {
-        "titulo": input("Título: "),
-        "autor": input("Autor: "),
-        "editora": input("Editora: "),
-        "ano_publicado": input("Ano de Publicação: "),
-        "genero": input("Gênero: "),
-        "numero_paginas": input("Número de Páginas: "),
-        "idioma": input("Idioma: ")
+        "Título": titulo,
+        "Autor": autor,
+        "Editora": editora,
+        "Ano": ano,
+        "Gênero": genero,
+        "Páginas": paginas,
+        "Idioma": idioma
     }
 
-    livros = carregar_livros()
     livros.append(livro)
-    salvar_livros(livros)
-    print(" Livro adicionado com sucesso!\n")
 
-def listar_livros():
-    livros = carregar_livros()
-    if not livros:
-        print(" Nenhum livro cadastrado.\n")
-        return
-    print("\n Lista de Livros:")
-    for i, livro in enumerate(livros, 1):
-        print(f"\nLivro {i}:")
-        for chave, valor in livro.items():
-            print(f"  {chave}: {valor}")
-    print()
+    print(f"\nLivro '{titulo}' cadastrado com sucesso!")
 
-def menu():
-    while True:
-        print("=== Biblioteca Escolar ===")
-        print("1. Adicionar livro")
-        print("2. Listar livros")
-        print("3. Sair")
-        opcao = input("Escolha uma opção: ")
+    continuar = input("Deseja cadastrar outro livro? (s/n): ").lower().upper()
+    if continuar != 's':
+        break
 
-        if opcao == "1":
-            adicionar_livro()
-        elif opcao == "2":
-            listar_livros()
-        elif opcao == "3":
-            print("Saindo...")
-            break
-        else:
-            print("Opção inválida.\n")
+with open('biblioteca.json', 'w') as arquivo:
+    json.dump(livros, arquivo, indent=4)
 
-menu()
+print("\nTodos os livros foram salvos com sucesso!")
