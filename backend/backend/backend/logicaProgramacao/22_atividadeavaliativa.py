@@ -8,13 +8,13 @@ id_produto = 0
 
 def carregar_arquivo(arquivo):
     try:
-        with open(arquivo, "r", encoding="utf-8") as arquivo_json:
+        with open(arquivo, "r") as arquivo_json:
             return json.load(arquivo_json)
     except FileNotFoundError:
         return []
 
 def salvar_arquivo(arquivo, dados):
-    with open(arquivo, "w", encoding="utf-8") as arquivo_json:
+    with open(arquivo, "w") as arquivo_json:
         json.dump(dados, arquivo_json, indent=4)
 
 def exibir_menu():
