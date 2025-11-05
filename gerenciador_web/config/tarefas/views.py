@@ -72,5 +72,5 @@ def excluir_tarefa(request, tarefa_id):
     tarefa = get_object_or_404(Tarefa, pk=tarefa_id)
     if request.method == 'POST':
         tarefa.delete()
-        return redirect('lista_tarefa')
+        return redirect('lista_tarefas')
     return render(request, 'tarefas/confirmar_exclusao.html', {'tarefa': tarefa})
